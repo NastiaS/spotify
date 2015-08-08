@@ -1,40 +1,19 @@
-app.controller("MainController", function($scope, spotifyFactory, $sce, ngAudio){
-    $scope.albums = [];
-    $scope.artist = '';
-    $scope.playing = false;
-    $scope.song = null;
-    $scope.player = null;
+app.controller("MainController", function($scope, LinkedJazzFactory, $state){
 
-    $scope.submit = function (artist) {
-  
-            spotifyFactory.getAlbums(artist)
-                .then(function (alb) {
-                        $scope.albums = alb;
-                });
-    };
+//Extract the name from the form and make a call to the Linked Jazz Api to get all jazz artists whose 
+//name or last name has typed in chars
+    $scope.getName = function (name) {
 
-
-    $scope.getTrackPreview = function(album) {
-        if($scope.song) {
-            if($scope.playing){
-                $scope.player.pause();
-                $scope.playing = false;
-            }
-
-            else{
-                $scope.player.play();
-                $scope.playing = true;
-            }
-        }
-        else {
-            spotifyFactory.getFirstTrack(album.id)
-            .then(function(tracks){
-                $scope.playing = true;
-                $scope.song = tracks.tracks.items[0].preview_url;
-                $scope.player = ngAudio.load($scope.song);
-                $scope.player.play();
-            });
+        LinkedJazzFactory.getByName(name) 
+            .then(function (art) {
+                $scope.art = art;
+            })
         };
+
+//change a state and pass the artist name to this state
+    $scope.changeState = function(artist) {
+        $state.go('artist',  {artist:artist})
+  
     };
 
 });

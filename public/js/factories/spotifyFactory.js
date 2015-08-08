@@ -1,14 +1,16 @@
-app.factory('spotifyFactory', function($http){
+app.factory('spotifyFactory', function ($http) {
 	return {
-		getAlbums: function(artist){
-			return $http.get('/spotify/' + artist).then(function(response){
-					return response.data.albums.items;
-				});
-			},
-		getFirstTrack: function(id){
-			return $http.get('/spotify/album/' + id).then(function(response){
-				return response.data;
-			});
+
+		getArtistId: function (artist) {
+			return $http.get('/spotify/getTracks/' + artist).then(function (response) {
+				return response.data
+			})
+		},
+
+		getTracksById: function (artistId) {
+			return $http.get('/spotify/getTracksById/'+ artistId).then(function (response) {
+				return response.data
+			})
 		}	
 	}
 });
