@@ -1,4 +1,4 @@
-app.factory('spotifyFactory', function ($http) {
+app.factory('spotifyFactory', ['$http', function ($http) {
 	return {
 
 		getArtistId: function (artist) {
@@ -13,4 +13,4 @@ app.factory('spotifyFactory', function ($http) {
 			})
 		}	
 	}
-});
+}]);

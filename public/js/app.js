@@ -1,14 +1,14 @@
 var app = angular.module('Jazz', ['ngAudio', 'ui.router']);
 
-app.config(function ($locationProvider, $urlRouterProvider) {
+app.config(['$locationProvider', '$urlRouterProvider',  function ($locationProvider, $urlRouterProvider) {
 
     $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/');
 
-});
+}]);
 
-app.config(function ($stateProvider) {
+app.config(['$stateProvider', function ($stateProvider) {
 
     $stateProvider
         .state('main', {
@@ -25,5 +25,5 @@ app.config(function ($stateProvider) {
     
         });
 
-});
+}]);
 

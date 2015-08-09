@@ -1,4 +1,4 @@
-app.controller("MainController", function($scope, LinkedJazzFactory, $state){
+app.controller("MainController", ['$scope', 'LinkedJazzFactory', '$state', function($scope, LinkedJazzFactory, $state){
 
 //Extract the name from the form and make a call to the Linked Jazz Api to get all jazz artists whose 
 //name or last name has typed in chars
@@ -16,7 +16,7 @@ app.controller("MainController", function($scope, LinkedJazzFactory, $state){
   
     };
 
-});
+}]);
 
         
     

@@ -1,4 +1,4 @@
-app.controller('ArtistController', function($scope, $stateParams, spotifyFactory, ngAudio) {
+app.controller('ArtistController', ['$scope', '$stateParams', 'spotifyFactory', 'ngAudio',  function($scope, $stateParams, spotifyFactory, ngAudio) {
     var artist = $stateParams.artist;
     $scope.display = [];
     $scope.song = null;
@@ -37,4 +37,4 @@ app.controller('ArtistController', function($scope, $stateParams, spotifyFactory
             	$scope.playing = false;
             }
   		}
-});
+}]);

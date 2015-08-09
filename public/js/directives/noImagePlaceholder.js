@@ -1,4 +1,4 @@
-app.directive('errSrc', function() {
+app.directive('errSrc', [function() {
   return {
     link: function(scope, element, attrs) {
 
@@ -15,4 +15,4 @@ app.directive('errSrc', function() {
       });
     }
   }
-});
+}]);
